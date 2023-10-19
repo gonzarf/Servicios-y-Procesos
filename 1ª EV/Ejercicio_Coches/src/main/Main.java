@@ -6,10 +6,40 @@
 
 package main;
 
+import java.util.ArrayList;
+
+import threads.Coche;
+
 public class Main {
 
 	public static void main(String[] args) {
 		
+
+		ArrayList<Coche> posiciones = new ArrayList<>();
+		ArrayList<Coche> carrera = new ArrayList<>();
+
+		
+		for (int i = 0; i < 10; i++) {
+
+			Coche h = new Coche(posiciones,0);
+			
+			carrera.add(h);
+			h.start();
+		}
+		
+		try {
+			
+			for (Coche hilo : carrera) {
+				hilo.join();
+			}
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		
+		/*Coche h = new Coche(posiciones,0,tiempoVueltas);
+		h.start();*/
 	}
 
 }
