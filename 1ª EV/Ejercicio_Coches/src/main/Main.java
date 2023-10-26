@@ -13,33 +13,46 @@ import threads.Coche;
 public class Main {
 
 	public static void main(String[] args) {
-		
 
-		ArrayList<Coche> posiciones = new ArrayList<>();
-		ArrayList<Coche> carrera = new ArrayList<>();
+		ArrayList<Coche> coches = new ArrayList<>();
+		Podio podio = new Podio(coches);
 
-		
 		for (int i = 0; i < 10; i++) {
 
-			Coche h = new Coche(posiciones,0);
-			
-			carrera.add(h);
-			h.start();
+			Coche h = new Coche("Coche-" + (i + 1), podio);
+			coches.add(h);
+
 		}
-		
-		try {
-			
-			for (Coche hilo : carrera) {
-				hilo.join();
+
+		for (Coche hilo : coches) {
+			hilo.start();
+		}
+
+		for (int i = 0; i < 10; i++) {
+			try {
+				Thread.sleep(1000);
+				podio.mostrar();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-			
-		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
-		
-		
-		/*Coche h = new Coche(posiciones,0,tiempoVueltas);
-		h.start();*/
+
+	}
+
+	public static boolean quedanCoches(ArrayList<Coche> coches) {
+
+		for (int i = 0; i < 10; i++) {
+			
+			if (coches.get(i).getVueltas() != 10) {
+				return true;
+			} else {
+
+			}
+
+		}
+
+		return false;
+
 	}
 
 }

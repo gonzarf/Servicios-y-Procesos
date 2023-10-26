@@ -6,26 +6,34 @@
 
 package threads;
 
-import java.util.ArrayList;
 import java.util.Random;
+
+import main.Podio;
 
 public class Coche extends Thread{
 	
-	private ArrayList<Coche> posiciones ;
 	private int vueltas = 0;
+	private String nombre;
+	private Podio podio;
 
-	public Coche(ArrayList<Coche> posiciones, int vueltas) {
 
-		this.posiciones = posiciones;
-		this.vueltas = vueltas;
+	public Coche(String nombre, Podio podio) {
+
+		this.nombre = nombre;
+		this.podio = podio;
+	}
+	
+	public Coche(){
+		
 	}
 
-	public ArrayList<Coche> getPosiciones() {
-		return posiciones;
+	
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setPosiciones(ArrayList<Coche> posiciones) {
-		this.posiciones = posiciones;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 	public int getVueltas() {
@@ -39,21 +47,20 @@ public class Coche extends Thread{
 	public synchronized void run() {
 		
 		Random r = new Random();
+		int tvuelta = r.nextInt(500,3000);
+
 		
-		for(int i = 1; i <= 10;i++) {
-			
-			int tiempo = r.nextInt(500,3000);
+		for(int i = 0; i<10; i++) {
 			
 			try {
-				
-				Thread.sleep(tiempo);
+				Thread.sleep(tvuelta);
+				vueltas++;
+				podio.vuelta(this);
 				
 			} catch (InterruptedException e) {
 				
 				e.printStackTrace();
 			}
-			
-			this.vueltas++;
 		}
 
 	}
