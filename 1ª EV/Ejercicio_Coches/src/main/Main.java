@@ -23,22 +23,26 @@ public class Main {
 			coches.add(h);
 
 		}
-
+		
 		for (Coche hilo : coches) {
 			hilo.start();
 		}
 
-		for (int i = 0; i < 10; i++) {
-			try {
+		while(quedanCoches(coches)) {
+						try {
 				Thread.sleep(1000);
 				podio.mostrar();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-
+		
 	}
-
+	
+	//El metodo mira si hay coches que no han llegado a 10 vueltas
+	//si alguno no ha llegado, devuelve un true
+	//si han llegado todos, devuelve false
+	
 	public static boolean quedanCoches(ArrayList<Coche> coches) {
 
 		for (int i = 0; i < 10; i++) {

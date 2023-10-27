@@ -48,7 +48,6 @@ public class Coche extends Thread{
 		
 		Random r = new Random();
 		int tvuelta = r.nextInt(500,3000);
-
 		
 		for(int i = 0; i<10; i++) {
 			
@@ -64,6 +63,8 @@ public class Coche extends Thread{
 		}
 
 	}
+	
+	
 
 
 	
