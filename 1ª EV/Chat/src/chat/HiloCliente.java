@@ -27,23 +27,29 @@ public class HiloCliente extends Thread {
 	public void run() {
 		
 		String[] mensaje;
+		String m;
 
 		try {
 				DataInputStream dis = new DataInputStream(socket.getInputStream());
 				
 			do {
 				
-				mensaje = dis.readUTF().split(" ");
+
+				m = dis.readUTF();
+				mensaje = m.split(" ");
+				m = m.substring(m.indexOf(" ") + 1);
+				
+
 				
 				for (HiloCliente cliente : listaHilos) {
 					
 					if (cliente.getSocket().getInetAddress().getHostName().equals(mensaje[0])) {
 						
-						cliente.enviar(mensaje[1]);
+						cliente.enviar(m);
 					}
 				}
 
-			} while (!mensaje[1].equalsIgnoreCase("exit"));
+			} while (!m.equalsIgnoreCase("exit"));
 
 			dis.close();
 			socket.close();
