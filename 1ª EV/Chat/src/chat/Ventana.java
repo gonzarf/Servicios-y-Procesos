@@ -49,8 +49,6 @@ public class Ventana extends JFrame {
 
 			public void keyPressed(KeyEvent e) {
 				
-				System.out.println(e.getKeyCode());
-				
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					
 					enviar();
