@@ -17,7 +17,7 @@ public class MainCliente {
 
 		try {
 			boolean continuar = true;
-			Socket socket = new Socket("192.168.1.133", 6565);
+			Socket socket = new Socket("PC18631", 6565);
 			dos = new DataOutputStream(socket.getOutputStream());
 			DataInputStream dis = new DataInputStream(socket.getInputStream());
 			Scanner sc = new Scanner(System.in);
