@@ -1,3 +1,4 @@
+
 package conexion;
 
 import java.sql.Connection;
@@ -8,7 +9,7 @@ import java.util.Properties;
 public class Conexion {
 	private static final String url = "jdbc:mysql://localhost/crud";
 	private static final String usuario = "root";
-	private static final String pswd = "";
+	private static final String pswd = "AumnoIFP";
 
 	public static Connection open() throws SQLException {
 		Properties props = new Properties();
