@@ -8,12 +8,11 @@ import java.net.Socket;
 public class HiloCliente extends Thread{
 	
 	Socket socket;
-	ServerSocket serversocket;
+
 	int numeroaleatorio;
 
-	public HiloCliente(Socket socket, ServerSocket serversocket, int numeroaleatorio) {
+	public HiloCliente(Socket socket, int numeroaleatorio) {
 		this.socket = socket;
-		this.serversocket = serversocket;
 		this.numeroaleatorio = numeroaleatorio;
 	}
 
@@ -31,14 +30,6 @@ public class HiloCliente extends Thread{
 
 	public void setNumeroaleatorio(int numeroaleatorio) {
 		this.numeroaleatorio = numeroaleatorio;
-	}
-
-	public ServerSocket getServersocket() {
-		return serversocket;
-	}
-
-	public void setServersocket(ServerSocket serversocket) {
-		this.serversocket = serversocket;
 	}
 
 	public void run() {
@@ -70,7 +61,6 @@ public class HiloCliente extends Thread{
 						dis.close();
 						dos.close();
 						socket.close();
-						serversocket.close();
 						break;
 						
 					}else {

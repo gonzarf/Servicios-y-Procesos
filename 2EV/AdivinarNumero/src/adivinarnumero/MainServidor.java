@@ -21,7 +21,7 @@ public class MainServidor {
 				Socket socketCliente = serverSocket.accept();
 				
 				// Lanzamos el hilo que gestiona la conexion de cada cliente 
-				HiloCliente hilo = new HiloCliente(socketCliente, serverSocket , numero);
+				HiloCliente hilo = new HiloCliente(socketCliente, numero);
 				hilo.start();
 	
 				}

@@ -10,14 +10,14 @@ public class MainCliente {
 	public static void main(String[] args) {
 
 		try {
-			Socket socket = new Socket("192.168.1.133", 6565);
+			Socket socket = new Socket("PC18631", 6565);
 			DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 			DataInputStream dis = new DataInputStream(socket.getInputStream());
 			Scanner sc = new Scanner(System.in);
 
 			while (true) {
 
-				System.out.println("Introduzca un numero del 1 al 10: ");
+				System.out.println("Introduzca un numero del 0 al 10: ");
 				String mensaje = sc.nextLine();
 				
 				dos.writeUTF(mensaje);
